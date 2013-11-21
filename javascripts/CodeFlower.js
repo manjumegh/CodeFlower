@@ -127,7 +127,9 @@ CodeFlower.prototype.mouseover = function(d) {
 };
 
 CodeFlower.prototype.mouseout = function(d) {
-  this.text.style('display', 'none');
+  this.text.attr('transform', 'translate(' + d.x + ',' + (d.y - 5 - (d.children ? 3.5 : Math.sqrt(d.size) / 2)) + ')')
+    .text(d.name + ": " + d.size + " loc")
+    .style('display', null);
 };
 
 CodeFlower.prototype.tick = function() {
