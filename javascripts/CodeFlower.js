@@ -12,7 +12,7 @@ var CodeFlower = function(selector, w, h) {
     .style("stroke", "#999")
     .style("fill", "#fff")
     .attr('width', w)
-    .attr('height', h);
+    .attr('height', h)
 
   this.force = d3.layout.force()
     .on("tick", this.tick.bind(this))
@@ -73,6 +73,7 @@ CodeFlower.prototype.update = function(json) {
     .style("fill", function color(d) {
       return "hsl(" + parseInt(360 / total * d.id, 10) + ",90%,70%)";
     })
+    .text(function(d) { return d.name; })
     .call(this.force.drag)
     .on("click", this.click.bind(this))
     .on("mouseover", this.mouseover.bind(this))
